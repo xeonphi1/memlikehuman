@@ -25,6 +25,7 @@ def parser() -> argparse.ArgumentParser:
     subs = p.add_subparsers(dest="command", required=True)
     for name in ("init", "serve", "doctor", "reindex"):
         subs.add_parser(name)
+    subs.add_parser("host-ingest", help="Offline host bridge: one JSON request on stdin")
     config = subs.add_parser(
         "config", help="Show configuration or validate and install a JSON config"
     )
@@ -90,7 +91,11 @@ def main(argv: list[str] | None = None) -> int:
             create_server(args.data_dir).run(transport="stdio")
             return 0
         scope = Scope(persona_id=args.persona, project_id=args.project)
-        if args.command == "config" and args.file:
+        if args.command == "host-ingest":
+            from .host import ingest
+
+            result = ingest(args.data_dir, scope, json.load(sys.stdin))
+        elif args.command == "config" and args.file:
             settings = Settings.model_validate_json(args.file.read_text(encoding="utf-8"))
             settings.save(args.data_dir)
             result = {"configured": True, "restart_server": True}

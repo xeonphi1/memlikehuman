@@ -17,6 +17,8 @@
 
 ---
 
+**新增：[Harness 自动捕获与压缩前交接](docs/host-capture.zh-CN.md)** — 指定预设的可见文本自动落盘，写入失败时阻止压缩，重启增量续传。
+
 ## 它记住什么？
 
 MemLikeHuman 是一个 **Python + SQLite 的本地 MCP 记忆服务**。模型负责对话，记忆属于你。
@@ -154,7 +156,7 @@ uv build
 
 测试包含真实 MCP 子进程、进程中断、幂等写入、事实变化、淡忘与日记追溯、照片线索、分区、迁移与备份。CI 覆盖 Linux、macOS、Windows 的 Python 3.11 / 3.13；跨真实模型的效果验证另见 [eval_models.py](examples/eval_models.py)。
 
-欢迎提交带复现步骤的 Issue 和有针对性的 PR。下一步重点是宿主自动捕获／交接插件、更大规模语义索引及真实模型评测。
+欢迎提交带复现步骤的 Issue 和有针对性的 PR。已提供 [Harness 自动捕获／压缩交接插件](docs/host-capture.zh-CN.md)。下一步重点是更多宿主适配、更大规模语义索引及真实模型评测。
 
 Apache-2.0 · [LICENSE](LICENSE) · [NOTICE](NOTICE)
 

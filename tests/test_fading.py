@@ -119,7 +119,7 @@ def test_v1_database_and_archive_migration(tmp_path, scope):
     with sqlite3.connect(directory / "memory.sqlite3") as db:
         db.executescript(SCHEMA)
     engine = Engine(directory)
-    assert engine.store.doctor()["schema_version"] == 2
+    assert engine.store.doctor()["schema_version"] == 3
     mid = remember(engine, scope)
     legacy = engine.store.export()
     legacy["version"] = 1

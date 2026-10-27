@@ -18,3 +18,7 @@ Validate with a synthetic unique phrase in session A: ask the model to record it
 The Whale project may also use `dsh-mnemon`; its memory spaces are a separate system. Assign responsibilities explicitly to avoid duplicate writes and injection. This service does not migrate or delete mnemon data. Old episodes can return gists, while `memory_read` retrieves original evidence. Photo cues are supplied identifiers/labels, not image recognition.
 
 Configuration fields, names, environment handling and overlay format were checked against the upstream [MCP client reference](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md), [source schema](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/src/index.ts), and [memory integration guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/mcp-memory.md) on 2026-10-27. Local tests exercise a real Python SDK stdio client/server. **Live Harness UI, Whale preset behavior and paid chat-model calls have not been tested.**
+
+## Automatic host capture
+
+The optional [host adapter guide](host-capture.zh-CN.md) and [profile patch](../examples/deepseek-harness-auto.cordis.yml) provide visible-text capture and awaited pre-compaction handoff for Harness 0.2.1-rc.3. Keep the MCP connection for retrieval and session resume.

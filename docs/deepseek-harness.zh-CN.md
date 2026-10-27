@@ -111,7 +111,7 @@ uv run memlikehuman --data-dir /ABSOLUTE/PATH/private/memlikehuman --persona wha
 
 工作交接另测：在 A 中记录一个任务事件，保存带有 `goal`、`completed`、`pending`、`constraints`、`next_step` 的 checkpoint，并填入该会话的 `covered_event_id`。B 的 `session_resume` 应返回该下一步。
 
-这是工具协作约定；通用 MCP 不能自动截获全部对话，也无法自行感知上下文快满。后续宿主插件才适合提供强制的自动捕获和压缩前交接。
+这是工具协作约定；通用 MCP 不能自动截获全部对话，也无法自行感知上下文快满。现已提供独立的 [宿主自动捕获与压缩交接插件](host-capture.zh-CN.md)，可替代逐条主动记录约定。
 
 ## 与 dsh-mnemon 共存
 

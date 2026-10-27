@@ -1,0 +1,15 @@
+# Merge into the existing profile patch; preserve whale and MCP entries.
+# Replaces the stock backend. Do NOT also insert a second compaction backend.
+- id: compaction-basic
+  name: /ABSOLUTE/PATH/memlikehuman/integrations/deepseek-harness/index.mjs
+  config:
+    command: /ABSOLUTE/PATH/memlikehuman/.venv/bin/memlikehuman
+    dataDir: /ABSOLUTE/PATH/private/memlikehuman
+    persona: whale
+    project: companionship
+    preset: whale
+    # Stable unique name per Harness installation; keep it after restarting.
+    instanceId: my-harness
+    timeoutMs: 60000
+    # Move existing compaction-basic config here, if you customized it.
+    compaction: {}

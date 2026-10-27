@@ -24,9 +24,9 @@ from .models import (
 )
 
 jieba.setLogLevel(logging.ERROR)
-SCHEMA_VERSION = 2
-EXPORT_VERSION = 2
-TABLES = ("personas", "events", "memories", "relations", "checkpoints")
+SCHEMA_VERSION = 3
+EXPORT_VERSION = 3
+TABLES = ("personas", "events", "memories", "relations", "checkpoints", "host_cursors")
 
 SCHEMA = """
 CREATE TABLE personas (
@@ -91,6 +91,16 @@ PRAGMA user_version=2;
 """
 
 
+MIGRATION_3 = """
+CREATE TABLE host_cursors (
+ persona_id TEXT NOT NULL, project_id TEXT NOT NULL, session_id TEXT NOT NULL,
+ offset INTEGER NOT NULL CHECK(offset >= 0), covered_event_id TEXT,
+ PRIMARY KEY(persona_id,project_id,session_id)
+);
+PRAGMA user_version=3;
+"""
+
+
 def dumps(value) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
 
@@ -118,6 +128,10 @@ class Store:
                         db.execute(statement)
             if version < 2:
                 for statement in MIGRATION_2.split(";"):
+                    if statement.strip():
+                        db.execute(statement)
+            if version < 3:
+                for statement in MIGRATION_3.split(";"):
                     if statement.strip():
                         db.execute(statement)
         self.path.chmod(0o600)
@@ -774,12 +788,14 @@ class Store:
         if (
             not isinstance(archive, dict)
             or archive.get("format") != "memlikehuman"
-            or archive.get("version") not in (1, EXPORT_VERSION)
+            or archive.get("version") not in (1, 2, EXPORT_VERSION)
         ):
             raise ValueError("Unsupported archive format/version")
         # Copy before applying archive upgrades; do not mutate the caller's object.
         archive = json.loads(dumps(archive))
         tables = archive.get("tables")
+        if isinstance(tables, dict) and archive["version"] < 3:
+            tables.setdefault("host_cursors", [])
         if not isinstance(tables, dict) or set(tables) != set(TABLES):
             raise ValueError("Archive table set is invalid")
         if any(
@@ -793,6 +809,20 @@ class Store:
             for row in archive.get("tables", {}).get("memories", []):
                 row.setdefault("gist", None)
         # Validate records before any writes. Additional relational invariants checked below.
+        for row in tables["host_cursors"]:
+            Scope(persona_id=row["persona_id"], project_id=row["project_id"])
+            if (
+                not isinstance(row["session_id"], str)
+                or not row["session_id"]
+                or len(row["session_id"]) > 200
+                or type(row["offset"]) is not int
+                or row["offset"] < 0
+                or (
+                    row["covered_event_id"] is not None
+                    and not isinstance(row["covered_event_id"], str)
+                )
+            ):
+                raise ValueError("Invalid host cursor")
         for row in tables["personas"]:
             Scope(persona_id=row["persona_id"])
             Persona.model_validate_json(row["content"])

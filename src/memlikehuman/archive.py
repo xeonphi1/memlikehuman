@@ -29,7 +29,7 @@ def load_archive(path: Path) -> dict:
         db = sqlite3.connect("file:" + quote(str(path.resolve())) + "?mode=ro", uri=True)
         db.row_factory = sqlite3.Row
         try:
-            if db.execute("PRAGMA user_version").fetchone()[0] not in (1, SCHEMA_VERSION):
+            if db.execute("PRAGMA user_version").fetchone()[0] not in (1, 2, SCHEMA_VERSION):
                 raise ValueError("Unsupported SQLite backup version")
             if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
                 raise ValueError("SQLite backup is corrupt")
@@ -40,6 +40,8 @@ def load_archive(path: Path) -> dict:
                 "tables": {
                     table: [dict(r) for r in db.execute(f"SELECT * FROM {table}")]
                     for table in TABLES
+                    if table != "host_cursors"
+                    or db.execute("PRAGMA user_version").fetchone()[0] >= 3
                 },
             }
         finally:

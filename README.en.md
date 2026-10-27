@@ -10,6 +10,8 @@ MemLikeHuman keeps personality, shared experiences, attributed facts and unfinis
 
 This is a working **v0.2 developer preview**, not a claim of human consciousness or perfect recall. The implementation is inspired by [Graphiti's temporal facts and provenance](https://github.com/getzep/graphiti), with SQLite instead of a graph database. No Docker, account, or API key is required for local storage, lexical retrieval, reviewed memory derivation and restoration.
 
+Optional [DeepSeek Harness host adapter](docs/host-capture.zh-CN.md): automatically captures visible text, persists a pre-compaction checkpoint and the generated summary before context replacement, and resumes from a durable cursor. Pinned to Harness 0.2.1-rc.3; text only, with no extraction API calls in capture. Install with `npm ci --ignore-scripts` in `integrations/deepseek-harness`, then merge [the profile patch](examples/deepseek-harness-auto.cordis.yml). Keep the MCP connection for recall/resume.
+
 ## What is implemented
 
 - Original submitted events persist before any extraction API request. Stable event IDs make retries idempotent.
@@ -138,7 +140,7 @@ Each file is a `ProviderConfig` object (not the full settings file). This opt-in
 
 ## Open source
 
-Apache-2.0. See [LICENSE](LICENSE), [NOTICE](NOTICE) and [CONTRIBUTING.md](CONTRIBUTING.md). Examples are synthetic and the neutral persona is original. Future work: host-specific lifecycle adapters, optional Graphiti backend, evaluation datasets and more efficient vector indexes. No GitHub or PyPI publishing happens automatically.
+Apache-2.0. See [LICENSE](LICENSE), [NOTICE](NOTICE) and [CONTRIBUTING.md](CONTRIBUTING.md). Examples are synthetic and the neutral persona is original. Future work: additional host adapters, optional Graphiti backend, evaluation datasets and more efficient vector indexes. No GitHub or PyPI publishing happens automatically.
 
 ## Fading, cues and performance
 
