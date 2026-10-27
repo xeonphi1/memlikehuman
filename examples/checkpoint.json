@@ -1,0 +1,7 @@
+{
+  "goal": "完成 MemLikeHuman 第一版",
+  "completed": ["确定本地存储与 MCP 接口"],
+  "pending": ["验证重启后恢复"],
+  "constraints": ["数据保存在本地", "不丢失原始事件"],
+  "next_step": "重启服务并调用 session_resume"
+}

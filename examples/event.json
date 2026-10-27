@@ -1,0 +1,9 @@
+{
+  "event_id": "synthetic-demo-001",
+  "text": "我们约定：以后改完代码，先跑测试再提交。",
+  "role": "user",
+  "source": "synthetic-example",
+  "session_id": "demo",
+  "category": "conversation",
+  "occurred_at": "2026-10-01T08:00:00+08:00"
+}

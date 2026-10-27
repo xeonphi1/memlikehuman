@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "memlikehuman"
+version = "0.2.0"
+description = "Local, portable persona and evidence-backed memory for MCP assistants"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = ["mcp>=1.20,<2", "pydantic>=2.9,<3", "httpx>=0.27,<1", "jieba>=0.42.1,<1"]
+
+[project.urls]
+Homepage = "https://github.com/xeonphi1/memlikehuman"
+Issues = "https://github.com/xeonphi1/memlikehuman/issues"
+Documentation = "https://github.com/xeonphi1/memlikehuman/blob/main/docs/deepseek-harness.zh-CN.md"
+
+[project.optional-dependencies]
+tokenizer = ["tiktoken>=0.8,<1"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.24,<2", "ruff>=0.8", "build>=1.2"]
+
+[project.scripts]
+memlikehuman = "memlikehuman.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/memlikehuman"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "memlikehuman": {
+      "command": "/ABSOLUTE/PATH/TO/memlikehuman/.venv/bin/memlikehuman",
+      "args": ["--data-dir", "/ABSOLUTE/PATH/TO/PRIVATE/DATA", "serve"]
+    }
+  }
+}

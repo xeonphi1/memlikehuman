@@ -1,0 +1,8 @@
+MemLikeHuman
+Copyright 2026 MemLikeHuman contributors
+
+Licensed under the Apache License, Version 2.0.
+
+The temporal validity and provenance design was inspired by Graphiti
+(https://github.com/getzep/graphiti). This project does not include Graphiti
+source code or depend on its graph database implementation.

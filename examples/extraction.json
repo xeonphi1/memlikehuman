@@ -1,0 +1,11 @@
+{
+  "memories": [
+    {
+      "content": "用户与助手约定，修改代码后先跑测试再提交。",
+      "kind": "agreement",
+      "basis": "user_statement",
+      "source_quote": "以后改完代码，先跑测试再提交",
+      "confidence": 1.0
+    }
+  ]
+}

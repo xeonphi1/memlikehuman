@@ -1,0 +1,210 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.9",
+  "clock": "2026-10-27T01:15:28.370155+00:00",
+  "repeats": 7,
+  "scope": "local in-process memory retrieval only; no network, embedding or LLM generation; OS disk cache not flushed",
+  "results": [
+    {
+      "memories": 1000,
+      "first_engine_resume": {
+        "median_ms": 10.933,
+        "p95_ms": 10.933,
+        "samples_ms": [
+          10.933
+        ]
+      },
+      "selective_recall": {
+        "median_ms": 3.535,
+        "p95_ms": 3.584,
+        "samples_ms": [
+          3.508,
+          3.584,
+          3.577,
+          3.537,
+          3.535,
+          3.478,
+          3.527
+        ]
+      },
+      "query_resume": {
+        "median_ms": 9.914,
+        "p95_ms": 10.127,
+        "samples_ms": [
+          9.914,
+          10.127,
+          9.737,
+          9.966,
+          10.08,
+          9.902,
+          9.725
+        ]
+      },
+      "common_term_recall": {
+        "median_ms": 4.512,
+        "p95_ms": 4.716,
+        "samples_ms": [
+          4.473,
+          4.523,
+          4.716,
+          4.564,
+          4.512,
+          4.509,
+          4.433
+        ]
+      },
+      "blank_resume": {
+        "median_ms": 10.37,
+        "p95_ms": 10.531,
+        "samples_ms": [
+          10.37,
+          10.531,
+          10.233,
+          10.175,
+          10.378,
+          10.269,
+          10.374
+        ]
+      },
+      "found_expected": true,
+      "common_result_count": 10,
+      "context_estimate": 3585,
+      "context_bytes": 3585,
+      "database_mb": 1.7
+    },
+    {
+      "memories": 10000,
+      "first_engine_resume": {
+        "median_ms": 81.788,
+        "p95_ms": 81.788,
+        "samples_ms": [
+          81.788
+        ]
+      },
+      "selective_recall": {
+        "median_ms": 28.363,
+        "p95_ms": 28.667,
+        "samples_ms": [
+          28.138,
+          28.064,
+          28.21,
+          28.667,
+          28.472,
+          28.363,
+          28.533
+        ]
+      },
+      "query_resume": {
+        "median_ms": 78.763,
+        "p95_ms": 82.359,
+        "samples_ms": [
+          79.524,
+          78.763,
+          78.7,
+          82.359,
+          78.833,
+          78.754,
+          78.354
+        ]
+      },
+      "common_term_recall": {
+        "median_ms": 37.952,
+        "p95_ms": 38.116,
+        "samples_ms": [
+          37.863,
+          37.952,
+          37.639,
+          37.89,
+          38.088,
+          38.116,
+          38.082
+        ]
+      },
+      "blank_resume": {
+        "median_ms": 83.688,
+        "p95_ms": 84.269,
+        "samples_ms": [
+          83.611,
+          84.269,
+          83.839,
+          83.754,
+          83.688,
+          83.229,
+          83.532
+        ]
+      },
+      "found_expected": true,
+      "common_result_count": 10,
+      "context_estimate": 7465,
+      "context_bytes": 7465,
+      "database_mb": 18.92
+    },
+    {
+      "memories": 100000,
+      "first_engine_resume": {
+        "median_ms": 808.641,
+        "p95_ms": 808.641,
+        "samples_ms": [
+          808.641
+        ]
+      },
+      "selective_recall": {
+        "median_ms": 288.216,
+        "p95_ms": 291.193,
+        "samples_ms": [
+          288.216,
+          291.003,
+          291.193,
+          287.805,
+          287.537,
+          287.872,
+          289.091
+        ]
+      },
+      "query_resume": {
+        "median_ms": 804.967,
+        "p95_ms": 805.455,
+        "samples_ms": [
+          805.099,
+          804.967,
+          801.72,
+          805.182,
+          801.633,
+          805.455,
+          798.581
+        ]
+      },
+      "common_term_recall": {
+        "median_ms": 396.001,
+        "p95_ms": 399.53,
+        "samples_ms": [
+          396.001,
+          396.835,
+          399.53,
+          395.843,
+          396.127,
+          395.235,
+          393.844
+        ]
+      },
+      "blank_resume": {
+        "median_ms": 866.509,
+        "p95_ms": 903.327,
+        "samples_ms": [
+          863.495,
+          862.304,
+          873.144,
+          903.327,
+          866.509,
+          892.316,
+          859.153
+        ]
+      },
+      "found_expected": true,
+      "common_result_count": 10,
+      "context_estimate": 8000,
+      "context_bytes": 8000,
+      "database_mb": 168.77
+    }
+  ]
+}

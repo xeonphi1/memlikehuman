@@ -1,0 +1,16 @@
+{
+  "extraction": {
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-chat",
+    "api_key_env": "MEMLIKEHUMAN_API_KEY",
+    "version": "1",
+    "timeout_seconds": 30
+  },
+  "embedding": null,
+  "emotion_half_life_hours": 6,
+  "memory_half_life_days": 180,
+  "gist_after_days": 180,
+  "distant_after_days": 730,
+  "retrieval_candidates": 200,
+  "semantic_scan_limit": 2000
+}

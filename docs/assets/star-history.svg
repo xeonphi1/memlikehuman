@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" role="img" aria-labelledby="title desc">
+<title id="title">xeonphi1/memlikehuman star trend</title>
+<desc id="desc">Daily GitHub star-count snapshots. History begins at the first successful sample.</desc>
+<rect width="880" height="300" rx="18" fill="#0c1828"/>
+<g font-family="system-ui, sans-serif" fill="#b8cadd">
+<text x="36" y="36" font-size="18" fill="#eaf4ff">GitHub stars · daily snapshots</text>
+<text x="36" y="150" font-size="16">Waiting for the first GitHub snapshot — no historical data yet.</text>
+<text x="36" y="281" font-size="11">Source: GitHub repository API · sampled counts can rise or fall · no reconstructed history</text></g></svg>

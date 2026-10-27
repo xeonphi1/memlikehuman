@@ -1,0 +1,20 @@
+# DeepSeek Harness and the Whale preset
+
+[完整中文指南](deepseek-harness.zh-CN.md) · [Cordis overlay](../examples/deepseek-harness.cordis.yml)
+
+This integration targets [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) and the community [linsport/dsh-whale-persona](https://github.com/linsport/dsh-whale-persona) preset (`whale`). These are independent projects; no affiliation is implied, and upstream persona text/art is not redistributed here.
+
+1. Clone this repository and run `uv sync --frozen`. Choose an absolute private data directory outside the checkout. Initialize it with `uv run memlikehuman --data-dir /PRIVATE/DATA --persona whale init`.
+2. Set an original bridge persona with `uv run memlikehuman --data-dir /PRIVATE/DATA --persona whale persona --file examples/whale-memory-persona.json`. This short profile complements the host's persona; it does not include the complete upstream Whale character. For full portability, locally store a persona you have permission to use.
+3. Copy `examples/deepseek-harness.cordis.yml` and replace the executable and data paths. Windows executables live in `.venv/Scripts/memlikehuman.exe`; macOS/Linux use `.venv/bin/memlikehuman`. Commands are spawned directly, so do not use shell variables or `~` in paths.
+4. Try `dsh web --patch /ABSOLUTE/PATH/your-overlay.yml` (or `npx @deepseek-ai/dsh web --patch ...`). For persistent use, back up and merge its single `insert` block into `~/.dsh/profiles/web/cordis.patch.yml` or the `desktop` equivalent. Respect a custom `DSH_HOME`. Keep existing Whale preset patches intact.
+5. Restart, create an empty session, and select the Whale preset. Add the [host instructions](../examples/whale-host-instructions.txt) to your existing persona or first session message. DSH does not currently support MCP prompt templates. Server instructions alone do not guarantee the model will call memory tools.
+6. Verify that `mcp__memlikehuman__session_resume` and the six other tools appear. Always send `persona_id="whale"` and a stable `project_id`, such as `companionship`. The overlay registers at host scope; the preset name does not automatically select a memory partition. CLI persona flags do not change tool defaults.
+
+No API is required for raw persistence, lexical recall, original reading or checkpoints. Optional extraction is configured separately from DSH's chat model, through MemLikeHuman's `config --file`. DSH scrubs ambient credential variables; the overlay explicitly forwards `MEMLIKEHUMAN_API_KEY` without storing the secret in YAML. GUI applications may not inherit a terminal's environment. Restart after changing provider configuration.
+
+Validate with a synthetic unique phrase in session A: ask the model to record it and inspect the actual successful tool call. Open a fresh session B in the same scope and ask it to recall that phrase, without copying A's conversation. Repeat with another tool-capable model. Pending extraction still permits raw-event search. For task handoff, submit a checkpoint referencing a recorded event from the same session, then inspect `session_resume` in B.
+
+The Whale project may also use `dsh-mnemon`; its memory spaces are a separate system. Assign responsibilities explicitly to avoid duplicate writes and injection. This service does not migrate or delete mnemon data. Old episodes can return gists, while `memory_read` retrieves original evidence. Photo cues are supplied identifiers/labels, not image recognition.
+
+Configuration fields, names, environment handling and overlay format were checked against the upstream [MCP client reference](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md), [source schema](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/src/index.ts), and [memory integration guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/mcp-memory.md) on 2026-10-27. Local tests exercise a real Python SDK stdio client/server. **Live Harness UI, Whale preset behavior and paid chat-model calls have not been tested.**

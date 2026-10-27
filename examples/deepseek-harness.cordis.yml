@@ -1,0 +1,15 @@
+# Merge this single insert into your user patch, or pass it with dsh web --patch.
+# Replace BOTH absolute paths. This is a Cordis overlay, not mcpServers JSON.
+- insert:
+    - id: memory-memlikehuman
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: memlikehuman
+        transport: stdio
+        command: /ABSOLUTE/PATH/memlikehuman/.venv/bin/memlikehuman
+        args: ['--data-dir', '/ABSOLUTE/PATH/private/memlikehuman', 'serve']
+        toolCallTimeoutMs: 60000
+        env:
+          # DSH scrubs ambient credential variables; explicitly forward only this key.
+          # Empty is fine when extraction/embedding are disabled (default).
+          MEMLIKEHUMAN_API_KEY: !!js process.env.MEMLIKEHUMAN_API_KEY || ''
