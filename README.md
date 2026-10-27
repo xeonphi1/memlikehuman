@@ -57,6 +57,10 @@ uv run memlikehuman --data-dir /tmp/memlikehuman-demo --project synthetic-demo r
 
 演示只使用合成中文记录，不调用付费 API：搬家前后的城市、共同约定、未确认的偏好，以及上次没完成的工作。Windows 请把 `/tmp/memlikehuman-demo` 换成新的本地目录。
 
+## 已经聊了 100 多天，怎么补导旧记忆？
+
+按[历史聊天迁移工作流](docs/history-migration.zh-CN.md)操作：导出原始聊天 → 转换为逐条事件 JSONL → 离线校验入库 → 分批提炼 → 核对人格与待办 → 新会话恢复。提供[可续跑的导入示例](examples/import_chat_history.py)，不会调用模型 API。当前仍需按实际平台格式做转换，不是任意平台导出的一键导入器。
+
 ## 给 DeepSeek Harness 的大鲸鱼接上记忆
 
 已准备 [一步一步的中文指南](docs/deepseek-harness.zh-CN.md)、[Cordis 配置](examples/deepseek-harness.cordis.yml) 和[会话调用约定](examples/whale-host-instructions.txt)。
@@ -136,7 +140,7 @@ uv run memlikehuman recall '' --cue-key 'photo:sha256:YOUR_IMAGE_HASH'
 
 [![Star trend — daily real snapshots](docs/assets/star-history.svg)](https://github.com/xeonphi1/memlikehuman/stargazers)
 
-
+由 [Star trend 工作流](.github/workflows/stars.yml)每天记录 GitHub 返回的实际星标总数。曲线从首次成功采样开始，不补造此前历史；取消 Star 也会使数量下降。新仓库在首次运行前显示等待采样。无需个人 token 或第三方图表服务；如果仓库限制 Actions 写权限，可以手动运行脚本更新。
 
 ## 参与开发
 

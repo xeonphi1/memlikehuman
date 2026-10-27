@@ -149,3 +149,7 @@ Version 0.2 presents old episodes as source-linked gists without deleting the di
 ![Daily real star-count snapshots](docs/assets/star-history.svg)
 
 The [Star trend workflow](.github/workflows/stars.yml) records actual daily GitHub counts using the built-in Actions token. History begins at the first successful sample and can decline when stars are removed. No synthetic history or third-party chart credentials are used.
+
+## Import existing conversations
+
+The [historical migration workflow (Chinese)](docs/history-migration.zh-CN.md) explains how to preserve existing conversations before switching models. Normalize your actual platform export to EventInput JSONL, then run [import_chat_history.py](examples/import_chat_history.py) with `--dry-run` before importing. The example preserves raw events without API calls and supports retries with stable IDs; extraction is a separate scoped `retry` step. It does not convert arbitrary DeepSeek, ChatGPT or Claude exports. The CLI `import` command restores MemLikeHuman archives, a different format.

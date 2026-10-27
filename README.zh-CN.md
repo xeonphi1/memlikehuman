@@ -34,6 +34,10 @@ uv run memlikehuman --data-dir /tmp/memlikehuman-demo --project synthetic-demo r
 
 Windows 可将 `/tmp/memlikehuman-demo` 换成一个新的本地目录。没有 uv 时可运行 `python -m pip install .` 安装；当前未发布到 PyPI。
 
+## 迁移已有历史
+
+已有数月聊天可按[历史迁移指南](docs/history-migration.zh-CN.md)补导：先取得真实原文、转换成事件 JSONL，再用示例脚本离线持久化，最后分批提炼。`import` 仅用于本项目备份，不接受任意平台聊天导出。
+
 ## 日常使用
 
 ```sh

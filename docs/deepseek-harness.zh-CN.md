@@ -6,6 +6,8 @@
 
 本文中的“大鲸鱼”指社区项目 [linsport/dsh-whale-persona](https://github.com/linsport/dsh-whale-persona)（鲸鱼娘模式，preset ID 为 `whale`）。MemLikeHuman 是独立项目，与 DeepSeek、Graphiti 或该社区预设没有官方合作关系。本仓库不分发上游人设全文、商标图片或角色美术。
 
+已有数月聊天？先按[历史迁移工作流](history-migration.zh-CN.md)补导原文，再按本文接回新会话。
+
 ## 1. 安装并初始化
 
 需要 Python 3.11+、支持 FTS5 的 SQLite，以及已能运行的 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)。在终端执行：
