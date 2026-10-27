@@ -136,7 +136,7 @@ uv run memlikehuman recall '' --cue-key 'photo:sha256:YOUR_IMAGE_HASH'
 
 [![Star trend — daily real snapshots](docs/assets/star-history.svg)](https://github.com/xeonphi1/memlikehuman/stargazers)
 
-由 [Star trend 工作流](.github/workflows/stars.yml)每天记录 GitHub 返回的实际星标总数。曲线从首次成功采样开始，不补造此前历史；取消 Star 也会使数量下降。新仓库在首次运行前显示等待采样。无需个人 token 或第三方图表服务；如果仓库限制 Actions 写权限，可以手动运行脚本更新。
+
 
 ## 参与开发
 
