@@ -32,9 +32,12 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-          cache-dependency-path: integrations/deepseek-harness/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            integrations/deepseek-harness/package-lock.json
       - run: uv sync --frozen --group dev
       - run: npm ci --ignore-scripts
         working-directory: integrations/deepseek-harness
+      - run: npm ci --ignore-scripts
       - run: npm test
-        working-directory: integrations/deepseek-harness
+      - run: npm pack --dry-run --ignore-scripts

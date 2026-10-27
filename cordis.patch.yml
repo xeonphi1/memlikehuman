@@ -1,0 +1,6 @@
+# Host-level listeners discover each selected agent's isolated compaction service.
+- insert:
+    - id: memlikehuman-capture
+      name: memlikehuman-harness-host
+    - id: memory-memlikehuman
+      name: memlikehuman-harness-host/mcp

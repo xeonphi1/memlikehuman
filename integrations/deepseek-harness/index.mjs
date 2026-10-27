@@ -6,6 +6,11 @@ export const inject = ['sessions', 'llm', 'tokenMeter'];
 
 export function apply(ctx, config) {
   const capture = createCapture(config);
+  attachCapture(ctx, capture);
+  ctx.plugin(guardedCompactor(BasicCompactionEngine, capture), config.compaction ?? {});
+}
+
+export function attachCapture(ctx, capture) {
   const timers = new Map();
   const pending = new Set();
   const report = () => ctx.logger.warn('MemLikeHuman capture failed; next flush retries from the saved cursor. Compaction is blocked until storage succeeds.');
@@ -33,6 +38,4 @@ export function apply(ctx, config) {
     timers.clear();
     await Promise.all([...pending, ...sessions.map(session => capture.flush(session))]);
   });
-  // Replaces the stock backend; preserves its automatic/manual/range logic.
-  ctx.plugin(guardedCompactor(BasicCompactionEngine, capture), config.compaction ?? {});
 }

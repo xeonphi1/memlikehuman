@@ -1,0 +1,68 @@
+{
+  "name": "memlikehuman-harness-host",
+  "version": "0.2.0",
+  "description": "Local conversation memory and durable pre-compaction handoff for DeepSeek Harness",
+  "type": "module",
+  "main": "./plugin/index.mjs",
+  "exports": {
+    ".": "./plugin/index.mjs",
+    "./mcp": "./plugin/mcp.mjs",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "memlikehuman-setup": "./plugin/setup.mjs"
+  },
+  "files": [
+    "plugin/index.mjs",
+    "plugin/mcp.mjs",
+    "plugin/config.mjs",
+    "plugin/setup.mjs",
+    "integrations/deepseek-harness/index.mjs",
+    "integrations/deepseek-harness/bridge.mjs",
+    "cordis.patch.yml",
+    "docs/host-capture.zh-CN.md",
+    "docs/dsh-install.md",
+    "docs/release-verification.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeonphi1/memlikehuman.git"
+  },
+  "homepage": "https://github.com/xeonphi1/memlikehuman",
+  "bugs": {
+    "url": "https://github.com/xeonphi1/memlikehuman/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "memory",
+    "mcp"
+  ],
+  "engines": {
+    "node": ">=22",
+    "dsh": "0.2.1-rc.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test plugin/*.test.mjs && npm --prefix integrations/deepseek-harness test",
+    "pack:check": "npm pack --dry-run --ignore-scripts"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-compaction-basic": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-mcp-client": "0.2.1-rc.3"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-compaction-basic": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-mcp-client": "0.2.1-rc.3"
+  }
+}

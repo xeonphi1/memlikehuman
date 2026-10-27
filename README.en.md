@@ -2,6 +2,8 @@
 
 # MemLikeHuman
 
+DSH bundle: [Installation, migration and uninstall / 安装、升级与卸载](docs/dsh-install.md).
+
 **Local, portable persona and evidence-backed memory for MCP assistants.**
 
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) · [MCP contract](docs/mcp.md)

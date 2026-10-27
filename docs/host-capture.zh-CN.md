@@ -4,20 +4,9 @@
 
 ## 安装
 
-适配 **DeepSeek Harness 0.2.1-rc.3** 的 `session/event`、`session/flush` 和 `BasicCompactionEngine.summarize`。依赖锁文件固定官方包；不保证其他版本兼容。对照源码版本为 `22ddee3792402c3e70ec5f86a63c3e3e895a2f60`。Node.js 22+、Python 3.11+。
+使用 [DSH bundle 安装、升级与卸载指南](dsh-install.md)。适配 Harness **0.2.1-rc.3**、Node 22+、Python 3.11+；Harness 本身的运行环境要求以发行版为准。插件使用 `agent/created`、`agentPresets.serviceFor` 找到所选预设的独立压缩器，在其 `summarize` 实例方法上安装写入保护，卸载时恢复。保留原压缩策略和摘要模型；不支持其他类型的压缩器。
 
-1. 在仓库根目录更新 Python 安装：`uv sync --frozen`。先通过原有 `backup` 命令备份记忆库。本次数据库升级到 v3，旧程序不能再打开新库。
-2. 安装宿主插件依赖：
-
-   ```sh
-   cd integrations/deepseek-harness
-   npm ci --ignore-scripts
-   ```
-
-3. 将 [自动捕获配置](../examples/deepseek-harness-auto.cordis.yml) 合并到 `~/.dsh/profiles/web/cordis.patch.yml`（桌面版使用 `desktop`；自定义 `DSH_HOME` 时以其目录为准）。替换所有绝对路径。Windows 的命令路径为 `.venv/Scripts/memlikehuman.exe`。
-4. 该补丁**替换**现有 `compaction-basic` 行，不是并行加载另一套压缩器。若原来调整过压缩阈值或摘要模型，将原配置完整移到 `config.compaction`。保留鲸鱼预设及原 MCP 配置。
-5. 保持 `dataDir`、`persona`、`project` 与 MCP 调用一致；`preset: whale` 只捕获鲸鱼会话，排除子代理。每套独立 Harness 安装使用不同且稳定的 `instanceId`。
-6. **重启 Harness**，进入鲸鱼会话。旧会话首次打开时，会从宿主仍保留的日志补录可见文本；已有读取位置时只读取增量。宿主已经删除的原文无法重建。
+旧版将 `compaction-basic` 行的 `name` 改成适配器路径的补丁不可继续使用：该字段是匹配条件，且 Web 预设内的压缩器具有独立作用域。请按升级指南清理旧覆盖，改为安装 bundle。不要同时加载两套自动捕获实例。
 
 安装此插件后，调整原来的宿主指令：不要再逐条用 `memory_record` 记录同样的对话；新会话仍调用 `session_resume(persona_id="whale", project_id="companionship")`，不指定旧 session。需要旧事时调用 `memory_recall` / `memory_read`。人格并未因启用插件而被修改。
 
@@ -63,7 +52,7 @@ sequenceDiagram
 5. 在测试数据目录中故意配置不存在的桥接命令，执行压缩应报错；恢复命令后可重试。不要使用自己的唯一记忆库做破坏性试验。
 6. 换模型、新建鲸鱼会话，通过 MCP `session_resume` 读取同一份记忆，再验证来源及下一步。
 
-自动化测试覆盖真实 Python 子进程与 SQLite、官方 npm Session 消息格式、官方 BasicCompactionEngine 摘要方法、失败阻止压缩、重启增量、跨预设隔离、删除与导出恢复游标。尚未运行实际 Harness UI / 付费模型端到端测试。
+自动化测试覆盖真实 Python 子进程与 SQLite、官方 npm Session 消息格式、官方 BasicCompactionEngine 摘要方法、失败阻止压缩、重启增量、跨预设隔离、删除与导出恢复游标。安装与启动验证见 [发布验证记录](release-verification.md)；付费模型效果未验证。
 
 适配器目前使用官方仍提供的 `snapshotEvents(from, to)` 范围读取接口；上游将其标记为 deprecated。升级 Harness 前运行插件测试并检查接口，不要无验证地修改依赖版本。
 

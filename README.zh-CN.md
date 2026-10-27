@@ -1,5 +1,7 @@
 # MemLikeHuman
 
+DSH bundle: [Installation, migration and uninstall / 安装、升级与卸载](docs/dsh-install.md).
+
 **让不同模型共享保存在本地的人格、经历和工作进度。**
 
 [首页](README.md) · [English](README.en.md) · [大鲸鱼接入](docs/deepseek-harness.zh-CN.md) · [性能实测](docs/performance.md) · [架构与行为](docs/architecture.md) · [MCP 接入约定](docs/mcp.md)

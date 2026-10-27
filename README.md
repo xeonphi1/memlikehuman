@@ -17,6 +17,10 @@
 
 ---
 
+**DSH 插件安装：[完整安装、升级与卸载指南](docs/dsh-install.md)**（记忆与上下文类；Python 核心需单独安装）。
+
+源码安装：`dsh plugin --profile web add github:xeonphi1/memlikehuman`。当前仅使用 GitHub 源码分发，申请 DSH 网站收录；尚未发布 npm，不提供应用内市场一键安装。
+
 **新增：[Harness 自动捕获与压缩前交接](docs/host-capture.zh-CN.md)** — 指定预设的可见文本自动落盘，写入失败时阻止压缩，重启增量续传。
 
 ## 它记住什么？
@@ -64,6 +68,10 @@ uv run memlikehuman --data-dir /tmp/memlikehuman-demo --project synthetic-demo r
 按[历史聊天迁移工作流](docs/history-migration.zh-CN.md)操作：导出原始聊天 → 转换为逐条事件 JSONL → 离线校验入库 → 分批提炼 → 核对人格与待办 → 新会话恢复。提供[可续跑的导入示例](examples/import_chat_history.py)，不会调用模型 API。当前仍需按实际平台格式做转换，不是任意平台导出的一键导入器。
 
 ## 给 DeepSeek Harness 的大鲸鱼接上记忆
+
+**自动捕获模式（推荐）**：按 [DSH bundle 安装指南](docs/dsh-install.md)安装，自动记录可见文本并在压缩前保存交接；检索和新会话恢复仍使用 MCP。此模式保护所选预设的默认压缩器摘要入口，升级数据库至 v3，已有用户请先备份。
+
+**基础 MCP 模式**：以下步骤适合仅使用工具、由模型主动提交记忆的用户。不要同时启用两套逐条记录约定。
 
 已准备 [一步一步的中文指南](docs/deepseek-harness.zh-CN.md)、[Cordis 配置](examples/deepseek-harness.cordis.yml) 和[会话调用约定](examples/whale-host-instructions.txt)。
 

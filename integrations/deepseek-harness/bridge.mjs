@@ -54,12 +54,12 @@ export function subprocess(config, payload) {
   });
 }
 
-export function createCapture(config, send = payload => subprocess(config, payload)) {
+export function createCapture(config, send = payload => subprocess(config, payload), select) {
   for (const field of ['command', 'dataDir', 'persona', 'project', 'instanceId', 'preset']) {
     if (typeof config[field] !== 'string' || !config[field]) throw new Error(`Missing ${field}`);
   }
   const states = new WeakMap();
-  const selected = session => session.header.agentPreset === config.preset && session.header.origin !== 'subagent';
+  const selected = session => (select ? select(session) : session.header.agentPreset === config.preset) && session.header.origin !== 'subagent';
   async function drain(session, checkpoint, summary) {
     const id = sessionKey(config.instanceId, session.id);
     const scopeKey = `${config.persona}:${config.project}`;
