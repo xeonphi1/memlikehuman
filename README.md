@@ -169,3 +169,4 @@ uv build
 Apache-2.0 · [LICENSE](LICENSE) · [NOTICE](NOTICE)
 
 感谢 [Graphiti](https://github.com/getzep/graphiti) 对时间、来源与关系设计的启发。本实现不依赖或复制 Graphiti，也未打包上游鲸鱼角色内容。
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/xeonphi1/memlikehuman)
