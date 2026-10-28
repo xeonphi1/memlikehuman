@@ -26,6 +26,9 @@ def parser() -> argparse.ArgumentParser:
     for name in ("init", "serve", "doctor", "reindex"):
         subs.add_parser(name)
     subs.add_parser("host-ingest", help="Offline host bridge: one JSON request on stdin")
+    web = subs.add_parser("web", help="Open the offline local memory dashboard")
+    web.add_argument("--port", type=int, default=0, help="Loopback port; 0 chooses a free port")
+    web.add_argument("--no-browser", action="store_true")
     config = subs.add_parser(
         "config", help="Show configuration or validate and install a JSON config"
     )
@@ -85,6 +88,11 @@ def parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
+        if args.command == "web":
+            from .web import serve
+
+            serve(args.data_dir, args.port, not args.no_browser)
+            return 0
         if args.command == "serve":
             from .server import create_server
 

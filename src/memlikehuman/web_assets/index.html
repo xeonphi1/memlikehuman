@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MemLikeHuman · 记忆工作台</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">m.</span>
+        <div>MemLikeHuman<small>记忆工作台</small></div>
+      </div>
+      <div class="local"><i></i> 本机运行 · 离线可用</div>
+      <label for="library">记忆库</label
+      ><select id="library"></select>
+      <label for="scope">人格 / 项目</label
+      ><select id="scope"></select>
+      <p class="nav-label">记忆分层</p>
+      <nav id="layers" aria-label="记忆分类"></nav>
+      <div class="side-foot">
+        记忆属于你。<br />让每一次重新开始，都有迹可循。
+      </div>
+    </aside>
+    <div class="workspace">
+      <header>
+        <div class="crumb">
+          我的记忆空间 <span>/</span> <span id="crumb">原始经历</span>
+        </div>
+        <div class="actions">
+          <button id="import-open">导入记忆包</button
+          ><button id="export-open" class="dark">导出与备份 ↗</button>
+        </div>
+      </header>
+      <main>
+        <div class="intro">
+          <div>
+            <p class="eyebrow">LOCAL MEMORY STUDIO</p>
+            <h1>记忆，有迹可循。</h1>
+            <p class="muted">
+              整理共同经历，保留人格与约定。在下一段对话里，接着说。
+            </p>
+          </div>
+          <span class="outline-tag">完全本地 · 无云端请求</span>
+        </div>
+        <section class="stats" aria-label="记忆概况">
+          <article>
+            <span>原始经历</span><strong id="stat-events">—</strong
+            ><small>保留原文与来源</small>
+          </article>
+          <article>
+            <span>事实与偏好</span><strong id="stat-facts">—</strong
+            ><small>区分陈述和推测</small>
+          </article>
+          <article>
+            <span>约定与成长</span><strong id="stat-growth">—</strong
+            ><small>共同积累，可追溯</small>
+          </article>
+          <article>
+            <span>工作交接</span><strong id="stat-work">—</strong
+            ><small>让未完成的事继续</small>
+          </article>
+        </section>
+        <section class="collection">
+          <div class="collection-heading">
+            <div>
+              <h2 id="layer-title">原始经历</h2>
+              <p id="layer-description" class="muted"></p>
+            </div>
+            <button id="new-record">＋ 新增记录</button>
+          </div>
+          <div class="toolbar">
+            <input
+              id="search"
+              type="search"
+              placeholder="搜索本层内容…"
+              aria-label="搜索本层内容"
+            /><span id="result-count" class="muted"></span
+            ><button id="refresh" aria-label="刷新列表">刷新</button>
+          </div>
+          <div id="list" class="record-list" aria-live="polite"></div>
+          <div class="pagination">
+            <span id="page-label"></span>
+            <div>
+              <button id="previous">上一页</button
+              ><button id="next">下一页</button>
+            </div>
+          </div>
+        </section>
+        <footer>
+          原文、来源、人格版本与交接状态保存在 SQLite。<span
+            id="library-path"
+          ></span>
+        </footer>
+      </main>
+    </div>
+    <dialog id="editor" class="drawer">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">MEMORY DETAIL</p>
+          <h2 id="editor-title">记忆详情</h2>
+        </div>
+        <button id="close-editor" aria-label="关闭详情">✕</button>
+      </div>
+      <form id="edit-form">
+        <div id="fields"></div>
+        <div id="source-area"></div>
+        <div class="dialog-actions">
+          <button type="button" id="delete-record" class="danger">
+            删除及关联记忆</button
+          ><button type="submit" id="save-record" class="dark">
+            保存新版本
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="transfer">
+      <div class="dialog-head">
+        <h2 id="transfer-title"></h2>
+        <button id="close-transfer" aria-label="关闭">✕</button>
+      </div>
+      <div id="transfer-content"></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
