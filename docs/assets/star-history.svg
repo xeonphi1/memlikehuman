@@ -10,20 +10,21 @@
 <text x="36" y="159.0" font-size="11">1</text>
 <path d="M64 80 H824" stroke="#23394f"/>
 <text x="36" y="84" font-size="11">2</text>
-<polyline points="64.00,155.00 127.33,155.00 190.67,80.00 254.00,80.00 317.33,80.00 380.67,80.00 444.00,80.00 507.33,80.00 634.00,80.00 697.33,80.00 760.67,80.00 824.00,80.00" fill="none" stroke="#5ee0d0" stroke-width="3"/>
+<polyline points="64.00,155.00 122.46,155.00 180.92,80.00 239.38,80.00 297.85,80.00 356.31,80.00 414.77,80.00 473.23,80.00 590.15,80.00 648.62,80.00 707.08,80.00 765.54,80.00 824.00,80.00" fill="none" stroke="#5ee0d0" stroke-width="3"/>
 <circle cx="64.00" cy="155.00" r="3" fill="#5ee0d0"/>
-<circle cx="127.33" cy="155.00" r="3" fill="#5ee0d0"/>
-<circle cx="190.67" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="254.00" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="317.33" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="380.67" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="444.00" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="507.33" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="634.00" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="697.33" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="760.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="122.46" cy="155.00" r="3" fill="#5ee0d0"/>
+<circle cx="180.92" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="239.38" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="297.85" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="356.31" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="414.77" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="473.23" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="590.15" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="648.62" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="707.08" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="765.54" cy="80.00" r="3" fill="#5ee0d0"/>
 <circle cx="824.00" cy="80.00" r="3" fill="#5ee0d0"/>
 <text x="64" y="254" font-size="12">2026-10-27</text>
-<text x="824" y="254" font-size="12" text-anchor="end">2026-11-08</text>
+<text x="824" y="254" font-size="12" text-anchor="end">2026-11-09</text>
 <text x="824" y="36" font-size="18" fill="#5ee0d0" text-anchor="end">2 stars</text>
 <text x="36" y="281" font-size="11">Source: GitHub repository API · sampled counts can rise or fall · no reconstructed history</text></g></svg>
