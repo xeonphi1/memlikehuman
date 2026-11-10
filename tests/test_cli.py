@@ -32,3 +32,10 @@ def test_cli_roundtrip_persona_config_backup_and_restore(tmp_path, capsys):
     assert main([*base, "config", "--file", str(invalid)]) == 1
     assert (data / "config.json").read_text() == before
     assert "must-not-save" not in capsys.readouterr().err
+
+
+def test_invalid_mcp_scope_is_rejected_before_creating_storage(tmp_path, capsys):
+    data = tmp_path / "should-not-exist"
+    assert main(["--data-dir", str(data), "--persona", "bad/scope", "serve"]) == 1
+    assert not data.exists()
+    assert capsys.readouterr().err

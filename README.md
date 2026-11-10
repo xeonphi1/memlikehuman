@@ -74,7 +74,7 @@ Windows 可用 `C:/Users/你的用户名/private-memory`。没有 uv 时，在�
 dsh plugin --profile web add github:xeonphi1/memlikehuman
 ```
 
-这条命令安装 DSH bundle，Python 核心仍需按上文安装，再按[安装、配置与升级指南](docs/dsh-install.md)设置路径、人格和项目。适配 Harness **0.2.1-rc.3**。目前通过 GitHub 源码分发，尚未发布 npm，也不提供应用内市场一键安装。
+这条命令安装 DSH bundle，Python 核心仍需按上文安装，再按[安装、配置与升级指南](docs/dsh-install.md)设置路径、人格和项目。MCP 默认分区与自动捕获配置一致，服务指令会提醒模型避免重复记录。适配 Harness **0.2.1-rc.3**。目前通过 GitHub 源码分发，尚未发布 npm，也不提供应用内市场一键安装。
 
 只需要 MCP 工具时，使用[基础接入指南](docs/deepseek-harness.zh-CN.md)；其他宿主参考[通用配置](examples/mcp.json)。新会话调用 `session_resume`，查找旧事调用 `memory_recall`，需要原话时调用 `memory_read`。
 

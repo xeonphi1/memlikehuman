@@ -66,3 +66,22 @@ test('configured bundle binds the existing isolated preset engine and restores i
     assert.equal(engine.summarize,original);
   } finally {rmSync(home,{recursive:true,force:true});}
 });
+
+test('setup rejects a legacy Python server before opening data or replacing configuration', {skip:process.platform==='win32'}, () => {
+  const home=mkdtempSync(join(tmpdir(),'mlh-old-core-'));
+  const path=join(home,'memlikehuman.json');
+  const command=join(home,'legacy-core');
+  const dataDir=join(home,'untouched-data');
+  const marker=join(home,'doctor-was-run');
+  const old=JSON.stringify({command,dataDir,persona:'whale',project:'test',preset:'whale',instanceId:'stable'});
+  writeFileSync(path,old);
+  writeFileSync(command,`#!${process.execPath}\nimport {writeFileSync} from 'node:fs';\nif(process.argv.includes('doctor')) writeFileSync(${JSON.stringify(marker)},'unexpected');\nconsole.log(process.argv.includes('serve') ? 'legacy serve help' : 'host-ingest');\n`,{mode:0o700});
+  try {
+    const result=spawnSync(process.execPath,['plugin/setup.mjs'],{encoding:'utf8',env:{...process.env,DSH_HOME:home}});
+    assert.notEqual(result.status,0);
+    assert.match(result.stderr,/outdated/);
+    assert.equal(readFileSync(path,'utf8'),old);
+    assert.throws(()=>readFileSync(marker),{code:'ENOENT'});
+    assert.throws(()=>readFileSync(dataDir),{code:'ENOENT'});
+  } finally {rmSync(home,{recursive:true,force:true});}
+});

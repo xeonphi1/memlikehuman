@@ -4,7 +4,15 @@ Transport: local stdio. Standard output is reserved for JSON-RPC; diagnostics us
 
 ## Calling convention
 
-Every tool accepts `persona_id` and `project_id` (both default to `default`). Always choose these explicitly for real projects. Source `event_id` must be globally unique in this local archive; UUIDs are recommended. Timestamps use ISO 8601 with an explicit timezone.
+Every tool accepts `persona_id` and `project_id`. Omitted arguments inherit the defaults selected when starting the server:
+
+```sh
+memlikehuman --data-dir /PRIVATE/DATA --persona whale --project companionship serve
+```
+
+With no startup flags, both still default to `default` for backward compatibility. Explicit tool arguments override each default independently; the literal string `default` always selects that named partition. These are convenience defaults, **not access restrictions**. The initialization instructions, tool schemas and `start_session` prompt expose the configured defaults. Existing records are not moved: query an old `default/default` partition explicitly if needed. Choose explicit scope arguments when using one server across several projects.
+
+The DSH bundle passes its configured persona/project to this server, so automatic capture and omitted-argument retrieval use the same partition. Source `event_id` must be globally unique in this local archive; UUIDs are recommended. Timestamps use ISO 8601 with an explicit timezone.
 
 | Tool | Required input | Main output |
 |---|---|---|
@@ -32,7 +40,13 @@ Every tool accepts `persona_id` and `project_id` (both default to `default`). Al
 
 The read-only resource is `persona://{persona_id}/current`. The `start_session` prompt takes optional `persona_id` and `project_id`. Some hosts do not load resources or prompts automatically; `session_resume` also returns the core persona.
 
-## Suggested host instructions
+## Host-managed capture
+
+The DSH bundle starts MCP with `serve --host-capture`. This changes both initialization instructions and the `start_session` prompt: the model is told not to duplicate conversation events already recorded by the adapter. Explicit task checkpoints and user-requested additional records remain available. The flag does not install, verify or enforce capture, and does not change tool availability. Use it only alongside a functioning capture adapter for the selected preset. A plain `serve` retains the manual recording instructions below.
+
+When upgrading the bundle, update the Python checkout and run `uv sync --frozen` first; setup rejects a Python server without `--host-capture` before changing configuration or opening the database.
+
+## Suggested host instructions (manual MCP mode)
 
 ```text
 Use MemLikeHuman for the selected persona and project only.

@@ -29,6 +29,8 @@ try {
     });
     const help = spawnSync(config.command, ['--help'], {encoding:'utf8', timeout:15000, windowsHide:true});
     if (help.status !== 0 || !help.stdout?.includes('host-ingest')) throw new Error('Python executable is unavailable or lacks host-ingest. Install the current Python package first.');
+    const serveHelp = spawnSync(config.command, ['serve', '--help'], {encoding:'utf8', timeout:15000, windowsHide:true});
+    if (serveHelp.status !== 0 || !serveHelp.stdout?.includes('--host-capture')) throw new Error('Python MCP server is outdated. Update the Python checkout and run uv sync --frozen before configuring this bundle. Configuration was not changed.');
     const check = spawnSync(config.command, ['--data-dir', config.dataDir, 'doctor'], {encoding:'utf8', timeout:60000, windowsHide:true});
     if (check.status !== 0) throw new Error('Python doctor failed. Run it directly to inspect the database; configuration was not changed.');
     const health = JSON.parse(check.stdout);

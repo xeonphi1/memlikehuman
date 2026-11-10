@@ -23,8 +23,14 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--persona", default="default")
     p.add_argument("--project", default="default")
     subs = p.add_subparsers(dest="command", required=True)
-    for name in ("init", "serve", "doctor", "reindex"):
+    for name in ("init", "doctor", "reindex"):
         subs.add_parser(name)
+    mcp = subs.add_parser("serve", help="Start stdio MCP with the selected default persona/project")
+    mcp.add_argument(
+        "--host-capture",
+        action="store_true",
+        help="Tell the model a host adapter records conversations; avoid duplicate manual writes",
+    )
     subs.add_parser("host-ingest", help="Offline host bridge: one JSON request on stdin")
     web = subs.add_parser("web", help="Open the offline local memory dashboard")
     web.add_argument("--port", type=int, default=0, help="Loopback port; 0 chooses a free port")
@@ -96,7 +102,11 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "serve":
             from .server import create_server
 
-            create_server(args.data_dir).run(transport="stdio")
+            create_server(
+                args.data_dir,
+                default_scope=Scope(persona_id=args.persona, project_id=args.project),
+                host_capture=args.host_capture,
+            ).run(transport="stdio")
             return 0
         scope = Scope(persona_id=args.persona, project_id=args.project)
         if args.command == "host-ingest":

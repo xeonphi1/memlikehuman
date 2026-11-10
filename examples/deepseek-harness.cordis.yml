@@ -7,7 +7,7 @@
         serverName: memlikehuman
         transport: stdio
         command: /ABSOLUTE/PATH/memlikehuman/.venv/bin/memlikehuman
-        args: ['--data-dir', '/ABSOLUTE/PATH/private/memlikehuman', 'serve']
+        args: ['--data-dir', '/ABSOLUTE/PATH/private/memlikehuman', '--persona', 'whale', '--project', 'companionship', 'serve']
         toolCallTimeoutMs: 60000
         env:
           # DSH scrubs ambient credential variables; explicitly forward only this key.

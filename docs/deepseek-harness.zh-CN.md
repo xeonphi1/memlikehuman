@@ -73,7 +73,7 @@ Harness 当前不支持 MCP prompt templates，所以不能依赖 `start_session
 | 保存交接 | `mcp__memlikehuman__session_checkpoint` |
 | 用户要求的纠错／删除 | `mcp__memlikehuman__memory_correct` / `memory_forget`（同名前缀） |
 
-每次传入固定的 `persona_id="whale"` 和 `project_id="companionship"`。工作项目可以另选 `project_id="my-app"`；同一人格跨项目共享核心人格，但不共享项目事件与待办。CLI 的 `--persona` 不会改变 MCP 工具参数的默认值。
+每次传入固定的 `persona_id="whale"` 和 `project_id="companionship"`。工作项目可以另选 `project_id="my-app"`；同一人格跨项目共享核心人格，但不共享项目事件与待办。启动 `serve` 时的 `--persona`、`--project` 现在会设置 MCP 工具和会话提示的默认分区；示例已设为 `whale/companionship`。显式传入工具参数仍可覆盖默认值，包括名为 `default` 的分区。旧记录不会自动迁移。
 
 首次恢复的参数示例：
 

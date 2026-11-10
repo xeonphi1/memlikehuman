@@ -52,7 +52,7 @@ uv run memlikehuman checkpoint examples/checkpoint.json --covered-event syntheti
 uv run memlikehuman resume --budget 8000
 ```
 
-Default storage: `~/.local/share/memlikehuman/`. Override with `MEMLIKEHUMAN_HOME` or global `--data-dir`. Keep real data outside this source repository. Select a persona/project with CLI global flags `--persona` / `--project` or explicit MCP arguments. A persona is shared across its projects; experiences and task state are project-scoped.
+Default storage: `~/.local/share/memlikehuman/`. Override with `MEMLIKEHUMAN_HOME` or global `--data-dir`. Keep real data outside this source repository. Select a persona/project with CLI global flags `--persona` / `--project` or explicit MCP arguments. For `serve`, these flags also set MCP omission defaults; explicit tool arguments still override them. Use `serve --host-capture` only alongside a capture adapter to avoid instructions that ask the model to record the same conversation twice. The DSH bundle supplies these flags automatically. A persona is shared across its projects; experiences and task state are project-scoped.
 
 No configured extraction provider means events stay `pending` and remain readable/searchable as raw events. `derive` applies a locally reviewed extraction file; `retry` processes pending events after configuring a model.
 

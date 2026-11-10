@@ -56,7 +56,9 @@ Windows 替换为 `.venv/Scripts/memlikehuman.exe`。包含空格的路径用引
 
 配置文件为 `~/.dsh/memlikehuman.json`，设置了 `DSH_HOME` 时则为 `$DSH_HOME/memlikehuman.json`。命令与 Harness 必须使用同一 `DSH_HOME`。`instanceId` 首次随机生成，重复配置保持不变；不同 Harness 安装不要复制同一 ID。此配置默认供该 DSH_HOME 下所有 profile 使用；两套独立运行实例应使用不同 DSH_HOME。
 
-重启 Harness。bundle 自动加载捕获插件和 `memlikehuman` MCP 服务。未配置时不修改现有压缩器并警告，自动捕获和 MCP 均未启用；配置错误会明确报错。
+重启 Harness。bundle 自动加载捕获插件和 `memlikehuman` MCP 服务。 MCP 的默认人格／项目与自动捕获配置保持一致；模型漏传分区参数时仍读取同一份记忆。bundle 同时启用 `serve --host-capture` 指令模式，提醒模型不要重复记录已被捕获的对话。显式工具参数仍可选择其他分区；默认值不构成访问控制。未配置时不修改现有压缩器并警告，自动捕获和 MCP 均未启用；配置错误会明确报错。
+
+升级此 bundle 前先更新 Python checkout 并运行 `uv sync --frozen`。新配置命令会检测 `serve --host-capture` 支持；旧 Python 不兼容时不会覆盖配置或打开数据库。历史 `default/default` 记录仍保留在原分区，可显式指定这两个参数检索，或在网页面板切换分区查看。
 
 ## 从旧手动补丁升级
 

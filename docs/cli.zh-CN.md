@@ -56,7 +56,7 @@ uv run memlikehuman resume --budget 8000
 
 默认数据目录是 `~/.local/share/memlikehuman/`，可用环境变量 `MEMLIKEHUMAN_HOME` 或全局参数 `--data-dir` 更换。真实对话、数据库和备份应放在代码仓库之外。
 
-通过全局 `--persona`、`--project` 选择人格与项目。核心人格在其各项目间共享，经历与任务按人格＋项目隔离。事件 ID 应在整个本地存储中唯一，建议使用 UUID。
+通过全局 `--persona`、`--project` 选择人格与项目；用于 `serve` 时，也会设置 MCP 工具及 `start_session` 的默认分区，显式工具参数仍可覆盖。核心人格在其各项目间共享，经历与任务按人格＋项目隔离。事件 ID 应在整个本地存储中唯一，建议使用 UUID。
 
 未配置提炼模型时，原文保存为 `pending`，仍然可读和按关键词检索。`derive` 用于导入经过本地检查的提炼结果；配置模型后用 `retry` 处理待提炼事件。角色设定和引用资料要分别标记为 `persona`、`reference`，不会被直接当成真实共同经历。
 
@@ -74,6 +74,8 @@ uv run memlikehuman resume --budget 8000
 2. 用户希望保留的对话事件，使用真实说话者和原文调用 `memory_record`。
 3. 需要过去的事实时调用 `memory_recall`，需要精确原文时调用 `memory_read`。
 4. 已知即将压缩上下文、交接或结束工作时，调用 `session_checkpoint`。
+
+已有自动捕获适配器时，可用 `serve --host-capture` 切换服务说明，避免模型再次逐条记录；DSH bundle 会自动启用。单独设置这个选项不会开启捕获。
 
 提示模板和 MCP 服务说明都是调用建议，不是自动钩子。项目没有替你修改任何现有助手的配置。
 

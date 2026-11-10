@@ -7,7 +7,8 @@ export function apply(ctx, options = {}) {
   if (!config) return;
   ctx.plugin(mcp, {
     serverName: 'memlikehuman', transport: 'stdio', command: config.command,
-    args: ['--data-dir', config.dataDir, 'serve'],
+    args: ['--data-dir', config.dataDir, '--persona', config.persona,
+      '--project', config.project, 'serve', '--host-capture'],
     env: {MEMLIKEHUMAN_API_KEY: process.env.MEMLIKEHUMAN_API_KEY || ''},
     toolCallTimeoutMs: config.timeoutMs ?? 60000, failOnStartupError: true,
   });
