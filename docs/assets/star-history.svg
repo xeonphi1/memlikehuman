@@ -10,37 +10,38 @@
 <text x="36" y="159.0" font-size="11">1</text>
 <path d="M64 80 H824" stroke="#23394f"/>
 <text x="36" y="84" font-size="11">2</text>
-<polyline points="64.00,155.00 90.21,155.00 116.41,80.00 142.62,80.00 168.83,80.00 195.03,80.00 221.24,80.00 247.45,80.00 299.86,80.00 326.07,80.00 352.28,80.00 378.48,80.00 404.69,80.00 430.90,80.00 457.10,80.00 483.31,80.00 509.52,80.00 535.72,80.00 561.93,80.00 588.14,80.00 614.34,80.00 640.55,80.00 666.76,80.00 692.97,80.00 719.17,80.00 745.38,80.00 771.59,80.00 797.79,80.00 824.00,80.00" fill="none" stroke="#5ee0d0" stroke-width="3"/>
+<polyline points="64.00,155.00 89.33,155.00 114.67,80.00 140.00,80.00 165.33,80.00 190.67,80.00 216.00,80.00 241.33,80.00 292.00,80.00 317.33,80.00 342.67,80.00 368.00,80.00 393.33,80.00 418.67,80.00 444.00,80.00 469.33,80.00 494.67,80.00 520.00,80.00 545.33,80.00 570.67,80.00 596.00,80.00 621.33,80.00 646.67,80.00 672.00,80.00 697.33,80.00 722.67,80.00 748.00,80.00 773.33,80.00 798.67,80.00 824.00,80.00" fill="none" stroke="#5ee0d0" stroke-width="3"/>
 <circle cx="64.00" cy="155.00" r="3" fill="#5ee0d0"/>
-<circle cx="90.21" cy="155.00" r="3" fill="#5ee0d0"/>
-<circle cx="116.41" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="142.62" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="168.83" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="195.03" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="221.24" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="247.45" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="299.86" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="326.07" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="352.28" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="378.48" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="404.69" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="430.90" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="457.10" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="483.31" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="509.52" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="535.72" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="561.93" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="588.14" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="614.34" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="640.55" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="666.76" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="692.97" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="719.17" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="745.38" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="771.59" cy="80.00" r="3" fill="#5ee0d0"/>
-<circle cx="797.79" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="89.33" cy="155.00" r="3" fill="#5ee0d0"/>
+<circle cx="114.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="140.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="165.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="190.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="216.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="241.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="292.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="317.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="342.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="368.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="393.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="418.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="444.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="469.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="494.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="520.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="545.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="570.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="596.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="621.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="646.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="672.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="697.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="722.67" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="748.00" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="773.33" cy="80.00" r="3" fill="#5ee0d0"/>
+<circle cx="798.67" cy="80.00" r="3" fill="#5ee0d0"/>
 <circle cx="824.00" cy="80.00" r="3" fill="#5ee0d0"/>
 <text x="64" y="254" font-size="12">2026-10-27</text>
-<text x="824" y="254" font-size="12" text-anchor="end">2026-11-25</text>
+<text x="824" y="254" font-size="12" text-anchor="end">2026-11-26</text>
 <text x="824" y="36" font-size="18" fill="#5ee0d0" text-anchor="end">2 stars</text>
 <text x="36" y="281" font-size="11">Source: GitHub repository API · sampled counts can rise or fall · no reconstructed history</text></g></svg>
